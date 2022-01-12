@@ -49,6 +49,7 @@ public class HomeController {
 		List<MultipartFile> allfile = request.getFiles("allfile");
 		
 		//이미지 파일 저장 
+		
 		return "home";
 	}
 
