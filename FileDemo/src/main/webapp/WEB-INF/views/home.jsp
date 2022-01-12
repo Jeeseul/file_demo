@@ -41,9 +41,10 @@ body {
 }
 
 .top {
-	height: 20vh;
+	height: 15vh;
 	margin-top: 5vh;
 }
+
 .bg-title {
 	background-color: #4D5EB3;
 }
@@ -52,44 +53,80 @@ body {
 	height: 40vh;
 }
 
+table, td, th {
+	border: 1px solid black;
+}
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+.btn-bottom {
+	color: white;
+	background-color: #4D5EB3;
+}
+
 .bottom {
 	padding-top: 10vh;
 }
 
 footer {
-  color: white;
-  background-color: #4D5EB3;
-  width: 100%;
-  position: absolute;
-  bottom: 0;
-  left:0;
-}
+	color: white;
+	background-color: #4D5EB3;
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+	left: 0;
 }
 </style>
 <body>
 	<div class="container-fluid">
 		<div class="row text-center">
-			<div class="col">1 of 3</div>
-			<div class="col">
+			<div class="col-3"></div>
+			<div class="col-6">
 				<div class="top">
-					<div class="badge bg-title px-5 py-3">파일 업로드 예제</div>
+					<div class="badge bg-title px-5 py-2">
+						<h2 class="mb-0">File List</h2>
+					</div>
 				</div>
 				<div class="middle">
-					<div class="text-center my-3">
-						<div class="my-5">
-							<p>이미지 파일용</p>
-							<input class="form-control file" type="file" id="imagefile"
-								name="imagefile" accept="image/*" multiple>
-						</div>
-						<div class="my-5">
-							<p>모든 파일용</p>
-							<input class="form-control file" type="file" id="imagefile"
-								name="imagefile" multiple>
-						</div>
+					<div class="text-center mb-3">
+						<button class="mb-3 btn btn-primary btn-bottom" onclick='show();'>관리</button>
+						<button class="mb-3 btn btn-primary btn-bottom" onclick="location.href='./create'">추가</button>
+						<table class="table">
+							<thead>
+								<tr>
+									<th scope="col" class="col-8">파일</th>
+									<th scope="col" class="col-2">수정</th>
+									<th scope="col" class="col-2">삭제</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td class="align-middle">파일</td>
+									<td class="align-middle"><button class="mt-5 btn btn-primary btn-bottom">수정</button></td>
+									<td class="align-middle"><button class="mt-5 btn btn-primary btn-bottom">삭제</button></td>
+
+								</tr>
+								<tr>
+									<td class="align-middle">파일</td>
+									<td class="align-middle"><button class="mt-5 btn btn-primary btn-bottom">수정</button></td>
+									<td class="align-middle"><button class="mt-5 btn btn-primary btn-bottom">삭제</button></td>
+
+								</tr>
+								<tr>
+									<td class="align-middle">파일</td>
+									<td class="align-middle"><button class="mt-5 btn btn-primary btn-bottom">수정</button></td>
+									<td class="align-middle"><button class="mt-5 btn btn-primary btn-bottom">삭제</button></td>
+								</tr>
+							</tbody>
+						</table>
+						<button class="mt-5 btn btn-primary btn-bottom">저장</button>
 					</div>
 				</div>
 			</div>
-			<div class="col">3 of 3</div>
+			<div class="col-3"></div>
 
 		</div>
 	</div>
