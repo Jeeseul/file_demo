@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.file.demo.DTO;
+import com.file.demo.DAO;
 /**
  * Handles requests for the application home page.
  */
@@ -63,10 +65,10 @@ public class HomeController {
 			if(!imagefile.isEmpty()) {
 				String originalUrl = newfile.getOriginalFilename();
 				
-				exampleImageFile.setOriginalUrl(originalUrl);
+				exampleImageFile.setOriginalImageUrl(originalUrl);
 				exampleImageFile.setFileOrder(imgOrder);
 				
-				createExampleImageFile(exampleImageFile);
+				DAO.createExampleImageFile(exampleImageFile);
 				imgOrder++;
 				
 				//파일이 업로드 될 경로 설정
