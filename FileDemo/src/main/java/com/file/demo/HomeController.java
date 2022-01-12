@@ -39,6 +39,12 @@ public class HomeController {
 		return "home";
 	}
 	
+	@RequestMapping(value = "/create", method = RequestMethod.GET)
+	public String create(Model model) {
+		
+		return "create";
+	}
+	
 	@RequestMapping(value = "/createFile", method = RequestMethod.GET)
 	public String createFile(Model model, MultipartHttpServletRequest request, MultipartFile file) {
 		
@@ -50,7 +56,14 @@ public class HomeController {
 		
 		//이미지 파일 저장 
 		
-		return "home";
+		return "create";
 	}
+	
+	@RequestMapping(value = "/update", method = RequestMethod.GET)
+	public String update(Model model) {
+		
+		return "update";
+	}
+	
 
 }

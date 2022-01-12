@@ -105,7 +105,7 @@ footer {
 							<tbody>
 								<tr>
 									<td class="align-middle">파일</td>
-									<td class="align-middle"><button class="mt-5 btn btn-primary btn-bottom">수정</button></td>
+									<td class="align-middle"><button class="mt-5 btn btn-primary btn-bottom" onclick="location.href='./update'">수정</button></td>
 									<td class="align-middle"><button class="mt-5 btn btn-primary btn-bottom">삭제</button></td>
 
 								</tr>
@@ -122,7 +122,6 @@ footer {
 								</tr>
 							</tbody>
 						</table>
-						<button class="mt-5 btn btn-primary btn-bottom">저장</button>
 					</div>
 				</div>
 			</div>
