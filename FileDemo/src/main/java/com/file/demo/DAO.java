@@ -15,7 +15,7 @@ public class DAO {
 	private static SqlSession sqlSession;
 	
 	public static int createExampleImageFile(DTO image) {
-		sqlSession.insert("createExampleImageFile", image);
+		sqlSession.insert("fileDemo.createExampleImageFile", image);
 		return 0;
 	}
 	
