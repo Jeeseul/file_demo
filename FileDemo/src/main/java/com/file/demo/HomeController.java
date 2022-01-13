@@ -72,8 +72,8 @@ public class HomeController {
 				//파일이름 저장 
 				String imageFileName = newFile.getOriginalFilename();
 				
-				exampleImageFile.setOriginalImageUrl(imageFileName);
-				exampleImageFile.setFileOrder(imgOrder);
+				exampleImageFile.setImageFileName(imageFileName);
+				exampleImageFile.setImageOrder(imgOrder);
 				
 				DAO.createExampleImageFile(exampleImageFile);
 				imgOrder++;
