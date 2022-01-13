@@ -49,23 +49,30 @@ public class HomeController {
 		return "create";
 	}
 	
-	@RequestMapping(value = "/createFile", method = RequestMethod.GET)
+	@RequestMapping(value = "/createFile", method = RequestMethod.POST)
 	public String createFile(Model model, MultipartHttpServletRequest request, MultipartFile file) {
 		
 		DTO exampleFile = new DTO();
 		DTO exampleImageFile = new DTO();
 		
-		List<MultipartFile> imagefile = request.getFiles("imagefile");
-		List<MultipartFile> allfile = request.getFiles("allfile");
+		List<MultipartFile> imageFile = request.getFiles("imagefile");
+		List<MultipartFile> allFile = request.getFiles("allfile");
+		
+		//받은 imagefile 출력
+		for(MultipartFile newFile : imageFile) {
+			System.out.println(newFile.getOriginalFilename());
+		}
 		
 		//이미지 파일 저장 
 		int imgOrder=1;
-		for(MultipartFile newfile : imagefile) {
+		
+		for(MultipartFile newFile : imageFile) {
 			
-			if(!imagefile.isEmpty()) {
-				String originalUrl = newfile.getOriginalFilename();
+			if(!imageFile.isEmpty()) {
+				//파일이름 저장 
+				String imageFileName = newFile.getOriginalFilename();
 				
-				exampleImageFile.setOriginalImageUrl(originalUrl);
+				exampleImageFile.setOriginalImageUrl(imageFileName);
 				exampleImageFile.setFileOrder(imgOrder);
 				
 				DAO.createExampleImageFile(exampleImageFile);
@@ -80,18 +87,15 @@ public class HomeController {
 					dir.mkdirs();
 				}
 				
-				if (!newfile.isEmpty()) {
-					//String ext = originalUrl.substring(originalUrl.lastIndexOf("."));
+				if (!newFile.isEmpty()) {
+					String extImageFileName = imageFileName.substring(imageFileName.lastIndexOf("."));
 					try {
-						newfile.transferTo(new File(saveDir + "/" + originalUrl));//newfile을 지정한 file(파라미터)로 저 
+						newFile.transferTo(new File(saveDir + "/" + extImageFileName));//newfile을 지정한 file(파라미터)로 저장 
 					} catch (IllegalStateException | IOException e) {
 						e.printStackTrace();
 					}
 				}
 			}
-			
-			
-			
 		}
 		
 		return "create";
