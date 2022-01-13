@@ -1,5 +1,7 @@
 package com.file.demo;
 
+import java.io.File;
+import java.io.IOException;
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.List;
@@ -14,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.file.demo.DTO;
+import com.file.demo.DAO;
 /**
  * Handles requests for the application home page.
  */
@@ -48,13 +52,47 @@ public class HomeController {
 	@RequestMapping(value = "/createFile", method = RequestMethod.GET)
 	public String createFile(Model model, MultipartHttpServletRequest request, MultipartFile file) {
 		
-		//DTO exampleFile = new DTO();
-		//DTO exampleImageFile = new DTO();
+		DTO exampleFile = new DTO();
+		DTO exampleImageFile = new DTO();
 		
 		List<MultipartFile> imagefile = request.getFiles("imagefile");
 		List<MultipartFile> allfile = request.getFiles("allfile");
 		
 		//이미지 파일 저장 
+		int imgOrder=1;
+		for(MultipartFile newfile : imagefile) {
+			
+			if(!imagefile.isEmpty()) {
+				String originalUrl = newfile.getOriginalFilename();
+				
+				exampleImageFile.setOriginalImageUrl(originalUrl);
+				exampleImageFile.setFileOrder(imgOrder);
+				
+				DAO.createExampleImageFile(exampleImageFile);
+				imgOrder++;
+				
+				//파일이 업로드 될 경로 설정
+				String saveDir = request.getSession().getServletContext().getRealPath("/resources/upload/file/image");//현재 서비스가 돌아가고 있는 서버의 웹서비스 디렉토리의 물리적 경로
+				
+				//위에서 설정한 경로의 폴더가 없을 경우 생성
+				File dir = new File(saveDir);
+				if (!dir.exists()) {
+					dir.mkdirs();
+				}
+				
+				if (!newfile.isEmpty()) {
+					//String ext = originalUrl.substring(originalUrl.lastIndexOf("."));
+					try {
+						newfile.transferTo(new File(saveDir + "/" + originalUrl));//newfile을 지정한 file(파라미터)로 저 
+					} catch (IllegalStateException | IOException e) {
+						e.printStackTrace();
+					}
+				}
+			}
+			
+			
+			
+		}
 		
 		return "create";
 	}
