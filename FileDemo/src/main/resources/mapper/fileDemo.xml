@@ -4,14 +4,14 @@
 <mapper namespace="fileDemo">
 
 <!-- 동아리 홍보 이미지 업로드 쿼리 -->
-	<!-- <insert id="createExampleImageFile"
+	<insert id="createExampleImageFile"
 		parameterType="com.file.demo.DTO">
-		INSERT INTO hsca219.fileDemo (id,
-		originalUrl, fileOrder)
-		SELECT #{clubAdvertiseId}, #{originalUrl},
-		#{fileOrder} 
-		WHERE #{originalUrl} !=' '
-	</insert> -->
+		INSERT INTO sanna422.fileDemo (id,
+		imageFileName, imageOrder)
+		SELECT #{id}, #{imageFileName},
+		#{imageOrder} 
+		WHERE #{imageFileName} !=' '
+	</insert>
 	
 	
 </mapper>
