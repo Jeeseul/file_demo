@@ -6,9 +6,9 @@ import org.springframework.web.multipart.MultipartFile;
 
 public class DTO {
 	private int id;
-	private String originalImageUrl;
+	private String imageFileName;
 	private int imageOrder;
-	private String fileOriginalUrl;
+	private String allFileName;
 	private int fileOrder;
 	private MultipartFile file; 
 	private Date regdate;
@@ -20,23 +20,11 @@ public class DTO {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getOriginalImageUrl() {
-		return originalImageUrl;
-	}
-	public void setOriginalImageUrl(String originalImageUrl) {
-		this.originalImageUrl = originalImageUrl;
-	}
 	public int getImageOrder() {
 		return imageOrder;
 	}
 	public void setImageOrder(int imageOrder) {
 		this.imageOrder = imageOrder;
-	}
-	public String getFileOriginalUrl() {
-		return fileOriginalUrl;
-	}
-	public void setFileOriginalUrl(String fileOriginalUrl) {
-		this.fileOriginalUrl = fileOriginalUrl;
 	}
 	public int getFileOrder() {
 		return fileOrder;
@@ -55,6 +43,18 @@ public class DTO {
 	}
 	public void setRegdate(Date regdate) {
 		this.regdate = regdate;
+	}
+	public String getImageFileName() {
+		return imageFileName;
+	}
+	public void setImageFileName(String imageFileName) {
+		this.imageFileName = imageFileName;
+	}
+	public String getAllFileName() {
+		return allFileName;
+	}
+	public void setAllFileName(String allFileName) {
+		this.allFileName = allFileName;
 	}
 	
 }
