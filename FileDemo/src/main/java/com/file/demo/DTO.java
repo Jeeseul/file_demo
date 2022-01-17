@@ -5,6 +5,7 @@ import java.util.Date;
 import org.springframework.web.multipart.MultipartFile;
 
 public class DTO {
+
 	private int id;
 	private String imageFileName;
 	private int imageOrder;
@@ -55,6 +56,12 @@ public class DTO {
 	}
 	public void setAllFileName(String allFileName) {
 		this.allFileName = allFileName;
+	}
+	
+	@Override
+	public String toString() {
+		return "DTO [id=" + id + ", imageFileName=" + imageFileName + ", imageOrder=" + imageOrder + ", allFileName="
+				+ allFileName + ", fileOrder=" + fileOrder + ", file=" + file + ", regdate=" + regdate + "]";
 	}
 	
 }

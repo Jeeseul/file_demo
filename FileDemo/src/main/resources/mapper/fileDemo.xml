@@ -6,9 +6,9 @@
 <!-- 동아리 홍보 이미지 업로드 쿼리 -->
 	<insert id="createExampleImageFile"
 		parameterType="com.file.demo.DTO">
-		INSERT INTO sanna422.fileDemo (id,
+		INSERT INTO camp2.fileDemo (
 		imageFileName, imageOrder)
-		SELECT #{id}, #{imageFileName},
+	 	VALUES #{imageFileName},
 		#{imageOrder} 
 		WHERE #{imageFileName} !=' '
 	</insert>
