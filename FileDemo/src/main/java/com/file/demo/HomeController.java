@@ -71,7 +71,7 @@ public class HomeController {
 				
 				imgOrder++;
 				
-				sqlSession.insert("fileDemo.createExampleImageFile", newFile);
+				sqlSession.insert("fileDemo.createExampleImageFile", exampleImageFile);
 
 				
 //				//파일이 업로드 될 경로 설정

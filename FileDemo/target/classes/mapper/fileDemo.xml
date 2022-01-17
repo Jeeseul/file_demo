@@ -8,9 +8,8 @@
 		parameterType="com.file.demo.DTO">
 		INSERT INTO camp2.fileDemo (
 		imageFileName, imageOrder)
-	 	VALUES #{imageFileName},
-		#{imageOrder} 
-		WHERE #{imageFileName} !=' '
+	 	VALUES '#{imageFileName}',
+		#{imageOrder}; 
 	</insert>
 	
 	
