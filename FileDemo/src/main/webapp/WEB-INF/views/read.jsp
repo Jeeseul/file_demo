@@ -106,12 +106,13 @@ footer {
 								</tr>
 							</thead>
 							<tbody>
-								<c:forEach var="imgFileList" items="${imgFileList}"
+								<c:forEach var="img" items="${imgFileList}"
 									varStatus="status">
 									<tr>
 										<td class="align-middle"><img id="imgFile"
-											src="<%=request.getSession().getServletContext().getRealPath("/resources/upload/image")%>/${imgFileList.imageFileName}"
-											alt="..."></td>
+											src="<%=request.getSession().getServletContext().getRealPath("/resources/upload/image")%>/${img.imageFileName}"
+											alt="..."> ${img.imageFileName}</td>
+											
 										<td><button class="btn btn-primary btn-bottom"
 												onclick="location.href='./update'">수정</button></td>
 										<td><button class="btn btn-primary btn-bottom">삭제</button></td>

@@ -84,15 +84,16 @@ public class HomeController {
 			ImageFile.put("imgOrder", exampleImageFile.getImageOrder());
 
 			// sqlSession.insert("fileDemo.createExampleImageFile", ImageFile);
-
+			String save = request.getSession().getServletContext().getRealPath("/resources/upload/image");//현재
+			System.out.println("save directory: " + save);
 			if (!imageFile.isEmpty()) {
 
 				// 파일이 업로드 될 경로 설정
 
-				// String saveDir =
-				// request.getSession().getServletContext().getRealPath("/resources/upload/file/image");//현재
+				String saveDir = request.getSession().getServletContext().getRealPath("/resources/upload/image");//현재
+				
 				// 서비스가 돌아가고 있는 서버의 웹서비스 디렉토리의 물리적 경로
-				String saveDir = "tomcat/webapps/uploads/image";
+				//String saveDir = "tomcat/webapps/uploads/image";
 
 				// 위에서 설정한 경로의 폴더가 없을 경우 생성
 				File dir = new File(saveDir);
@@ -103,7 +104,7 @@ public class HomeController {
 				if (!newFile.isEmpty()) {
 					String extImageFileName = imageFileName.substring(imageFileName.lastIndexOf("."));
 					try {
-						newFile.transferTo(new File(saveDir + "/" + extImageFileName));
+						newFile.transferTo(new File(saveDir + "/" + imageFileName));
 					} catch (IllegalStateException | IOException e) {
 						e.printStackTrace();
 					}
@@ -116,14 +117,14 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value = "/read", method = RequestMethod.GET)
-	public String read(HttpSession session, HttpServletRequest request) {
+	public ModelAndView read(HttpSession session, HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView();
 		List<DTO> imgFileList = imageFileService.readImageFileList();
 		mv.addObject("imgFileList", imgFileList);
 		System.out.println(mv);
-
-		return "redirect:/";
-
+		mv.setViewName("read");
+		
+		return mv;
 	}
 
 	@RequestMapping(value = "/update", method = RequestMethod.GET)
