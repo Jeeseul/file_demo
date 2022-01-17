@@ -14,7 +14,7 @@ public class DAO {
 		
 	public int createExampleImageFile(DTO image) {
 		//System.out.println(image.toString());
-		//sqlSession.insert("fileDemo.createExampleImageFile", image);
+		sqlSession.insert("fileDemo.createExampleImageFile", image);
 		//System.out.println("finished inserting");
 
 		return 0;

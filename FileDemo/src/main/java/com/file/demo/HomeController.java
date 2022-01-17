@@ -1,7 +1,9 @@
 package com.file.demo;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,8 +25,8 @@ public class HomeController {
 	ServiceFile imageFileService;
 	
 
-	@Autowired
-	private SqlSessionTemplate sqlSession;
+//	@Autowired
+//	private SqlSessionTemplate sqlSession;
 	
 	/**
 	 * Simply selects the home view to render by returning its name.
@@ -60,7 +62,6 @@ public class HomeController {
 		
 		for(MultipartFile newFile : imageFile) {
 			
-			if(!imageFile.isEmpty()) {
 				//파일이름 저장 
 				String imageFileName = newFile.getOriginalFilename();
 				
@@ -70,8 +71,15 @@ public class HomeController {
 				imageFileService.createExampleImageFile(exampleImageFile);
 				
 				imgOrder++;
+				System.out.println(exampleImageFile.toString());
 				
-				sqlSession.insert("fileDemo.createExampleImageFile", exampleImageFile);
+				Map<String, Object> ImageFile = new HashMap<String, Object>();
+				ImageFile.put("imageFileName", exampleImageFile.getImageFileName());
+				ImageFile.put("imgOrder", exampleImageFile.getImageOrder());
+				
+				//sqlSession.insert("fileDemo.createExampleImageFile", ImageFile);
+				
+//				if(!imageFile.isEmpty()) {
 
 				
 //				//파일이 업로드 될 경로 설정
@@ -91,7 +99,7 @@ public class HomeController {
 //						e.printStackTrace();
 //					}
 //				}
-			}
+			
 		}
 		
 		return "redirect:/";
