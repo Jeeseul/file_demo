@@ -85,7 +85,7 @@ footer {
 				<div class="middle">
 					<div class="text-center my-3">
 						<form method="POST" enctype="multipart/form-data" id="uploadForm"
-							action="<%=request.getContextPath()%>/createFile"
+							action="<%=request.getContextPath()%>/update/${imgList[0].id}/write"
 							onsubmit="return confirm('파일을 업로드 하시겠습니까?');">
 							<div class="my-5">
 								<c:forEach var="img" items="${imgList}"
@@ -93,7 +93,7 @@ footer {
 									<p>
 										<%-- <img id="imgFile"
 											src="<%=request.getSession().getServletContext().getRealPath("/resources/upload/image")%>/${img.imageFileName}"
-											alt="..."> --%> ${img.imageFileName}
+											alt="..."> --%> 기존 이미지 : ${img.imageFileName}
 									</p>
 								</c:forEach>
 								<p>이미지 파일용</p>

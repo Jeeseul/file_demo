@@ -60,9 +60,9 @@ public class HomeController {
 		List<MultipartFile> allFile = request.getFiles("allfile");
 
 		// 받은 imagefile 출력
-		for (MultipartFile newFile : imageFile) {
-			System.out.println(newFile.getOriginalFilename());
-		}
+//		for (MultipartFile newFile : imageFile) {
+//			System.out.println(newFile.getOriginalFilename());
+//		}
 
 		// 이미지 파일 저장
 		int imgOrder = 1;
@@ -129,7 +129,7 @@ public class HomeController {
 	}
 
 	@RequestMapping(value = "/update/{id}", method = RequestMethod.GET)
-	public ModelAndView update(@PathVariable int id, Model model) {
+	public ModelAndView readDetail(@PathVariable int id, Model model) {
 		
 		ModelAndView mv = new ModelAndView();
 		
@@ -164,20 +164,56 @@ public class HomeController {
 		return mv;
 	}
 	
-	@RequestMapping(value = "/update/write", method = RequestMethod.GET)
-	public ModelAndView update(Model model, MultipartHttpServletRequest request, MultipartFile file) {
+	@RequestMapping(value = "/update/{id}/write", method = RequestMethod.POST)
+	public String update(@PathVariable int id, ModelAndView mv, MultipartHttpServletRequest request, MultipartFile file) {
 		
-		ModelAndView mv = new ModelAndView();
+		
+		DTO exampleImageFile = new DTO();
 
-		//List<DTO> imgList = imageFileService.updateImageFileList();
+		List<MultipartFile> imageFile = request.getFiles("imagefile");
+
+		//imageFileService.updateImageFileList(imageFile);
 	
-		//mv.addObject("imgList", imgList);
+		if (imageFile.get(0).getOriginalFilename() != "") {
+			// 선택된 파일이 있을 때 기존의 파일을 모두 삭제
+			System.out.println("실행");
+			imageFileService.deleteImageFileList(id);
+			System.out.println("update file");
+			int imgOrder = 1;
+			for (MultipartFile newfile : imageFile) {
+				String imageFileName = newfile.getOriginalFilename();// 원본 파일 명
+				imgOrder++;
+				
+				exampleImageFile.setImageFileName(imageFileName);
+				exampleImageFile.setImageOrder(imgOrder);
 
-		System.out.println(mv);
+				imageFileService.createExampleImageFile(exampleImageFile);
 
-		mv.setViewName("update");
+				imgOrder++;
+				System.out.println(exampleImageFile.toString());				
+
+				String saveDir = request.getSession().getServletContext().getRealPath("/resources/upload/image");//현재
+
+				File dir = new File(saveDir);
+				if (!dir.exists()) {
+					dir.mkdirs();
+				}
+
+				if (!newfile.isEmpty()) {
+					String ext = imageFileName.substring(imageFileName.lastIndexOf("."));
+					try {
+						newfile.transferTo(new File(saveDir + "/" + imageFileName));
+					} catch (IllegalStateException | IOException e) {
+						e.printStackTrace();
+					}
+				}
+
+				System.out.println(saveDir);
+			}
+		}
+
 		
-		return mv;
+		return "redirect:/";
 	}
 
 }
