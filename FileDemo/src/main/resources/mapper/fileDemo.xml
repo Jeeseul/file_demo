@@ -14,6 +14,24 @@
 		resultType="com.file.demo.DTO"
 		parameterType="hashmap">
 		SELECT id, imageFileName, imageOrder
-		FROM camp2.fileDemo
+		FROM camp2.fileDemo ORDER
+		BY `fileOrder`
 	</select>
+	
+	<!-- 각 id별 내용 가져오 -->
+	<select id="getImg"
+		resultType="com.file.demo.DTO" parameterType="hashmap">
+		SELECT id, imageFileName, imageOrder FROM
+		camp2.fileDemo WHERE id=#{id};
+		<!-- SELECT CA.id, CAF.fileOriginalUrl FROM clubAdvertise CA , hsca219.clubAdvertiseFile 
+			as CAF WHERE CA.id = #{id} and CA.id=CAF.clubAdvertiseId -->
+	</select>
+	
+	<!-- 이미지수정 쿼리 -->
+	<update id="updateImageFileList"
+		parameterType="com.file.demo.DTO">
+		UPDATE camp2.fileDemo SET
+		imageFileName =
+		#{imageFileName}, imageOrder = #{imageOrder} WHERE id = #{id}
+	</update>
 </mapper>

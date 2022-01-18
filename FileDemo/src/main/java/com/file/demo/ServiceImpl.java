@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
 @Service
 public class ServiceImpl implements ServiceFile{
 	
@@ -26,6 +27,13 @@ public class ServiceImpl implements ServiceFile{
 	public int updateImageFileList(DTO image) {
 		// TODO Auto-generated method stub
 		return imageFileDAO.updateImageFileList(image);
+	}
+
+	@Override
+	public List<DTO> getImg(int id) {
+		List<DTO> imageList = imageFileDAO.getImg(id);
+
+		return imageList;
 	}
 
 	

@@ -88,6 +88,14 @@ footer {
 							action="<%=request.getContextPath()%>/createFile"
 							onsubmit="return confirm('파일을 업로드 하시겠습니까?');">
 							<div class="my-5">
+								<c:forEach var="img" items="${imgList}"
+									varStatus="status">
+									<p>
+										<%-- <img id="imgFile"
+											src="<%=request.getSession().getServletContext().getRealPath("/resources/upload/image")%>/${img.imageFileName}"
+											alt="..."> --%> ${img.imageFileName}
+									</p>
+								</c:forEach>
 								<p>이미지 파일용</p>
 								<input class="form-control" type="file" id="imagefile"
 									name="imagefile" accept="image/*" multiple>
