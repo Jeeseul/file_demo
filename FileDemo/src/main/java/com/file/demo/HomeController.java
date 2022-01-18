@@ -164,5 +164,21 @@ public class HomeController {
 		
 		return mv;
 	}
+	
+	@RequestMapping(value = "/update/write", method = RequestMethod.GET)
+	public ModelAndView update(Model model, MultipartHttpServletRequest request, MultipartFile file) {
+		
+		ModelAndView mv = new ModelAndView();
+
+		//List<DTO> imgList = imageFileService.updateImageFileList();
+	
+		//mv.addObject("imgList", imgList);
+
+		System.out.println(mv);
+
+		mv.setViewName("update");
+		
+		return mv;
+	}
 
 }

@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
 @Service
 public class ServiceImpl implements ServiceFile{
 	
@@ -33,6 +34,13 @@ public class ServiceImpl implements ServiceFile{
 	public int deleteImageFileList(int id) {
 		return imageFileDAO.deleteImageFileList(id);
 
+	}
+
+	@Override
+	public List<DTO> getImg(int id) {
+		List<DTO> imageList = imageFileDAO.getImg(id);
+
+		return imageList;
 	}
 
 	
