@@ -77,7 +77,7 @@ footer {
 	color: white;
 	background-color: #4D5EB3;
 	width: 100%;
-	position: absolute;
+	position: fixed;
 	bottom: 0;
 	left: 0;
 }
@@ -94,7 +94,6 @@ footer {
 				</div>
 				<div class="middle">
 					<div class="text-center mb-3">
-						<button class="mb-3 btn btn-primary btn-bottom" onclick='show();'>관리</button>
 						<button class="mb-3 btn btn-primary btn-bottom"
 							onclick="location.href='./create'">추가</button>
 						<table class="table">
@@ -110,7 +109,7 @@ footer {
 									varStatus="status">
 									<tr>
 										<td class="align-middle"><img id="imgFile"
-											src="<%=request.getSession().getServletContext().getRealPath("/resources/upload/image")%>/${img.imageFileName}"
+											src="<%=request.getContextPath()%>/resources/upload/image/${img.imageFileName}"
 											alt="..."> ${img.imageFileName}</td>
 											
 										<td><button class="btn btn-primary btn-bottom"
