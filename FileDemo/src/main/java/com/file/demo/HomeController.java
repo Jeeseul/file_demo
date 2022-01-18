@@ -35,14 +35,14 @@ public class HomeController {
 //	@Autowired
 //	private SqlSessionTemplate sqlSession;
 
-	/**
-	 * Simply selects the home view to render by returning its name.
-	 */
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(Locale locale, Model model) {
-
-		return "home";
-	}
+//	/**
+//	 * Simply selects the home view to render by returning its name.
+//	 */
+//	@RequestMapping(value = "/", method = RequestMethod.GET)
+//	public String home(Locale locale, Model model) {
+//
+//		return "read";
+//	}
 
 	@RequestMapping(value = "/create", method = RequestMethod.GET)
 	public String create(Model model) {
@@ -117,7 +117,7 @@ public class HomeController {
 		return "redirect:/";
 	}
 	
-	@RequestMapping(value = "/read", method = RequestMethod.GET)
+	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView read(HttpSession session, HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView();
 		List<DTO> imgFileList = imageFileService.readImageFileList();
@@ -151,7 +151,7 @@ public class HomeController {
 		
 		ModelAndView mv = new ModelAndView();
 		
-		
+		imageFileService.deleteImageFileList(id);
 		//List<DTO> clubAdDetailList = imageFileService.readClubAdvertiseDetail(id);
 
 //		List<DTO> imgList = imageFileService.getImg(id);
@@ -159,7 +159,7 @@ public class HomeController {
 
 		System.out.println(mv);
 
-		mv.setViewName("update");
+		mv.setViewName("redirect:/");
 		
 		return mv;
 	}
