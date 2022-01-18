@@ -92,11 +92,11 @@ footer {
 								<input class="form-control" type="file" id="imagefile"
 									name="imagefile" accept="image/*" multiple>
 							</div>
-							<div class="my-5">
+<!-- 							<div class="my-5">
 								<p>모든 파일용</p>
 								<input class="form-control" type="file" id="allfile"
 									name="allfile" multiple>
-							</div>
+							</div> -->
 							<button class="btn btn-primary">저장</button>
 						</form>
 					</div>

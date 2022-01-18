@@ -32,18 +32,6 @@ public class HomeController {
 	@Autowired
 	ServiceFile imageFileService;
 
-//	@Autowired
-//	private SqlSessionTemplate sqlSession;
-
-//	/**
-//	 * Simply selects the home view to render by returning its name.
-//	 */
-//	@RequestMapping(value = "/", method = RequestMethod.GET)
-//	public String home(Locale locale, Model model) {
-//
-//		return "read";
-//	}
-
 	@RequestMapping(value = "/create", method = RequestMethod.GET)
 	public String create(Model model) {
 
@@ -84,17 +72,15 @@ public class HomeController {
 			ImageFile.put("imageFileName", exampleImageFile.getImageFileName());
 			ImageFile.put("imgOrder", exampleImageFile.getImageOrder());
 
-			// sqlSession.insert("fileDemo.createExampleImageFile", ImageFile);
 			String save = request.getSession().getServletContext().getRealPath("/resources/upload/image");//현재
 			System.out.println("save directory: " + save);
 			if (!imageFile.isEmpty()) {
 
 				// 파일이 업로드 될 경로 설정
-
 				String saveDir = request.getSession().getServletContext().getRealPath("/resources/upload/image");//현재
 				
 				// 서비스가 돌아가고 있는 서버의 웹서비스 디렉토리의 물리적 경로
-				//String saveDir = "tomcat/webapps/uploads/image";
+				// String saveDir = "tomcat/webapps/uploads/image";
 
 				// 위에서 설정한 경로의 폴더가 없을 경우 생성
 				File dir = new File(saveDir);

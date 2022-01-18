@@ -36,7 +36,7 @@
 }
 /* start page */
 body {
-	height: 100vh;
+	height: auto;
 	font-family: 'Cafe24SsurroundAir';
 }
 
@@ -83,7 +83,7 @@ footer {
 }
 </style>
 <body>
-	<div class="container-fluid">
+	<div class="container-fluid mb-5">
 		<div class="row text-center">
 			<div class="col-3"></div>
 			<div class="col-6">
@@ -110,8 +110,8 @@ footer {
 									<tr>
 										<td class="align-middle"><img id="imgFile"
 											src="<%=request.getContextPath()%>/resources/upload/image/${img.imageFileName}"
-											alt="..."> ${img.imageFileName}</td>
-											
+											alt="..." width=200px> <br>${img.imageFileName}</td>
+										<%-- 예시: src="http://hsca219.cafe24.com/uploads/clubAdvertise/${clubAdImgList.originalUrl}" --%>											
 										<td><button class="btn btn-primary btn-bottom"
 												onclick="location.href='./update/${img.id}'">수정</button></td>
 										<td><button class="btn btn-primary btn-bottom" onclick="location.href='./delete/${img.id}'">삭제</button></td>
@@ -128,8 +128,8 @@ footer {
 
 		</div>
 	</div>
-	<footer class="text-center py-3">
+<!--  	<footer class="text-center py-3">
 		<span class="align-middle">@2022 Web Service 양지후, 이지슬</span>
-	</footer>
+	</footer> -->
 </body>
 </html>
