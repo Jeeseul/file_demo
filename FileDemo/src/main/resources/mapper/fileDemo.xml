@@ -16,4 +16,10 @@
 		SELECT id, imageFileName, imageOrder
 		FROM camp2.fileDemo
 	</select>
+	
+	<delete id="deleteExampleImageFile"
+		parameterType="hashmap">
+		DELETE FROM camp2.fileDemo
+		WHERE id = #{id}
+	</delete>
 </mapper>

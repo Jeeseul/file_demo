@@ -28,5 +28,10 @@ public class DAO {
 
 	}
 	
+	public int deleteImageFileList(int id) {
+		return sqlSession.delete("fileDemo.deleteExampleImageFile");
+
+	}
+
 	
 }

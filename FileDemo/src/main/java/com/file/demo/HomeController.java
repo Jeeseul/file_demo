@@ -145,5 +145,24 @@ public class HomeController {
 		
 		return mv;
 	}
+	
+	@RequestMapping(value = "/delete/{id}", method = { RequestMethod.GET, RequestMethod.POST })
+	public ModelAndView delete(@PathVariable int id, Model model) {
+		
+		ModelAndView mv = new ModelAndView();
+		
+		
+		//List<DTO> clubAdDetailList = imageFileService.readClubAdvertiseDetail(id);
+
+//		List<DTO> imgList = imageFileService.getImg(id);
+	å
+//		mv.addObject("imgList", imgList);
+
+		System.out.println(mv);
+
+		mv.setViewName("update");
+		
+		return mv;
+	}
 
 }

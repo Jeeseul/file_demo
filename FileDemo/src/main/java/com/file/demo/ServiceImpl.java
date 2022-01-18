@@ -24,8 +24,15 @@ public class ServiceImpl implements ServiceFile{
 
 	@Override
 	public int updateImageFileList(DTO image) {
-		// TODO Auto-generated method stub
-		return imageFileDAO.updateImageFileList(image);
+//		// TODO Auto-generated method stub
+//		return imageFileDAO.updateImageFileList(image);
+		return 0;
+	}
+
+	@Override
+	public int deleteImageFileList(int id) {
+		return imageFileDAO.deleteImageFileList(id);
+
 	}
 
 	
