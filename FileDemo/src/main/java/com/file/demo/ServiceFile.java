@@ -6,5 +6,6 @@ public interface ServiceFile {
 		
 		public int createExampleImageFile(DTO image);
 		public List<DTO> readImageFileList();
+		public int updateImageFileList(DTO image);
 
 }

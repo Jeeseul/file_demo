@@ -114,8 +114,8 @@ footer {
 											alt="..."> ${img.imageFileName}</td>
 											
 										<td><button class="btn btn-primary btn-bottom"
-												onclick="location.href='./update'">수정</button></td>
-										<td><button class="btn btn-primary btn-bottom">삭제</button></td>
+												onclick="location.href='./update/${img.id}'">수정</button></td>
+										<td><button class="btn btn-primary btn-bottom" onclick="location.href='./delete/${img.id}'">삭제</button></td>
 
 									</tr>
 								</c:forEach>

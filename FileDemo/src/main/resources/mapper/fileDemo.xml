@@ -13,7 +13,7 @@
 	<select id="readExampleImageFile"
 		resultType="com.file.demo.DTO"
 		parameterType="hashmap">
-		SELECT imageFileName, imageOrder
+		SELECT id, imageFileName, imageOrder
 		FROM camp2.fileDemo
 	</select>
 </mapper>

@@ -22,6 +22,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 
+
 /**
  * Handles requests for the application home page.
  */
@@ -127,10 +128,22 @@ public class HomeController {
 		return mv;
 	}
 
-	@RequestMapping(value = "/update", method = RequestMethod.GET)
-	public String update(Model model) {
+	@RequestMapping(value = "/update/{id}", method = RequestMethod.GET)
+	public ModelAndView update(@PathVariable int id, Model model) {
+		
+		ModelAndView mv = new ModelAndView();
+		
+		//List<DTO> clubAdDetailList = imageFileService.readClubAdvertiseDetail(id);
 
-		return "update";
+		List<DTO> imgList = imageFileService.getImg(id);
+	
+		mv.addObject("imgList", imgList);
+
+		System.out.println(mv);
+
+		mv.setViewName("update");
+		
+		return mv;
 	}
 
 }

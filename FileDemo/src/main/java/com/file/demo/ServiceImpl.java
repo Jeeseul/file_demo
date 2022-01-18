@@ -22,6 +22,12 @@ public class ServiceImpl implements ServiceFile{
 		return imageFileDAO.readExampleImageFile();
 	}
 
+	@Override
+	public int updateImageFileList(DTO image) {
+		// TODO Auto-generated method stub
+		return imageFileDAO.updateImageFileList(image);
+	}
+
 	
 	
 }
