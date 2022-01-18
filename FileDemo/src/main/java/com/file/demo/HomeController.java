@@ -156,8 +156,9 @@ public class HomeController {
 
 //		List<DTO> imgList = imageFileService.getImg(id);
 //		mv.addObject("imgList", imgList);
+		List<DTO> imgList = imageFileService.getImg(id);
 
-		System.out.println(mv);
+		System.out.println(imgList);
 
 		mv.setViewName("redirect:/");
 		
