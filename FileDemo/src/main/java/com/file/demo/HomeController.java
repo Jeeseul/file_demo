@@ -155,7 +155,6 @@ public class HomeController {
 		//List<DTO> clubAdDetailList = imageFileService.readClubAdvertiseDetail(id);
 
 //		List<DTO> imgList = imageFileService.getImg(id);
-	å
 //		mv.addObject("imgList", imgList);
 
 		System.out.println(mv);

@@ -27,6 +27,7 @@ public class DAO {
 		//System.out.println(image.toString());
 		return sqlSession.selectList("fileDemo.readExampleImageFile");
 		//System.out.println("finished inserting");
+
 	}
 	
 	public List<DTO> getImg(int id) {
